@@ -130,6 +130,7 @@ dmypy.json
 
 # Temp Files
 ~$*
+outputs/*
 
 # IDE's
 .idea/

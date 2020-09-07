@@ -2,13 +2,15 @@ import os
 
 import pandas as pd
 
+from config import Config
+
 root_path = os.path.dirname(os.path.abspath(__file__))
 
 
 def main():
     print("******    Start   ******")
 
-    df = pd.read_csv(root_path + './datasets/titanic/titanic.csv')
+    df = pd.read_csv(r'' + Config.TITANIC_CSV_DATA_FILE)
     # titanic_df = pd.read_excel(root_path + './datasets/titanic/titanic.xlsx', sheet_name='titanic')
     # print("\nInput file Information ----> \n")
     # df.info()
@@ -32,6 +34,15 @@ def main():
 
     print("\nNumber of Females survived in 3rd Class ----> \n")
     print(df[(df.Sex == 'female') & (df.Pclass == 3)][['Sex', 'Survived', 'Pclass']].groupby(['Sex', 'Pclass']).count().to_string(index=False))
+
+    print("\n\nWriting data to File ----> \n")
+    # out_dir = Config.OUTPUT_PATH.rsplit('/', 1)[0]
+    # if not os.path.exists(Config.OUTPUT_PATH):
+    #     os.mkdir(Config.OUTPUT_PATH)
+    os.makedirs(Config.OUTPUT_PATH, exist_ok=True)
+    csv_data = pd.DataFrame()
+    csv_data = csv_data.append([df.head(5), df.tail(5)])
+    csv_data.to_csv(Config.OUTPUT_PATH + "result.csv", index=False)
 
 
 if __name__ == '__main__':
