@@ -1,0 +1,20 @@
+# Environments
+venv/
+
+# Temp Files
+~$*
+outputs/*
+
+# IDE's
+.idea/
+
+# GIT
+.git
+.gitignore
+
+# Docs
+README.md
+
+# Docker
+.dockerignore
+Dockerfile
