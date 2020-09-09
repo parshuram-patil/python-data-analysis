@@ -5,9 +5,9 @@ def get_value(var_name, default_value):
     if var_name in os.environ:
         env_value = os.environ.get(var_name)
         env_value = env_value.strip()
-        if len(env_value) == 2 and env_value[0] is "\"" and env_value[1] is "\"":
+        if len(env_value) == 2 and env_value[0] == "\"" and env_value[1] == "\"":
             return None
-        elif len(env_value) == 2 and env_value[0] is "'" and env_value[1] is "'":
+        elif len(env_value) == 2 and env_value[0] == "'" and env_value[1] == "'":
             return None
         return env_value
     if default_value:
